@@ -1,12 +1,14 @@
 n, k = map(int, input().split())
 
-p = n // k
-ans = 0
+nums = [0] * k
+for i in range(1, n + 1):
+    nums[i % k] += 1
 
-if k % 2:
-    print(p ** 3)
-else:
-    for i in range(1, n + 1):
-        if i % k == k //2:
-            ans += 1
-    print(p ** 3 + ans ** 3)
+ans = 0
+for a in range(k):
+    b = (k - a) % k
+    c = (k - a) % k
+    if (b + c) % k == 0:
+        ans += nums[a] * nums[b] * nums[c]
+print(ans)
+
